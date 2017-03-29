@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 enum RedditError: Error {
     case invalidURL
+    case noData
 }
 
 protocol APIClient {
@@ -48,5 +50,18 @@ extension RedditAPIClient: DataAdapter {
             completion(result)
         }
         return task
+    }
+
+    func getImage(_ url: URL, completion: @escaping ((Result<UIImage, Error>) -> Void)) {
+        let queue = DispatchQueue(label: "com.yara.imageQueue")
+        queue.async {
+            if let data = try? Data(contentsOf: url),
+                let image = UIImage(data: data) {
+                completion(Result.success(image))
+            } else {
+                completion(.failure(NetworkError.unexpectedData))
+            }
+        }
+
     }
 }

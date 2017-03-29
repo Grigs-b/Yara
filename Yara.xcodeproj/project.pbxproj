@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24394A5B1E8BFACA00BD47D0 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24394A5A1E8BFACA00BD47D0 /* Style.swift */; };
 		243A28B11E8ADFBE00F0B771 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243A28AF1E8ADFBE00F0B771 /* PostTableViewCell.swift */; };
 		243A28B21E8ADFBE00F0B771 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 243A28B01E8ADFBE00F0B771 /* PostTableViewCell.xib */; };
 		2488592B1E89A4BD003D63D0 /* QueryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488592A1E89A4BD003D63D0 /* QueryTypes.swift */; };
@@ -20,7 +21,6 @@
 		248DED5D1E859E5900B86C18 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DED5C1E859E5900B86C18 /* Result.swift */; };
 		248DED5F1E85A5BE00B86C18 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DED5E1E85A5BE00B86C18 /* Logger.swift */; };
 		248DED611E85A6BE00B86C18 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DED601E85A6BE00B86C18 /* JSON.swift */; };
-		248DED631E85A98D00B86C18 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DED621E85A98D00B86C18 /* Endpoint.swift */; };
 		248DED651E89594600B86C18 /* DataAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DED641E89594600B86C18 /* DataAdapter.swift */; };
 		248DED671E895A4900B86C18 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DED661E895A4900B86C18 /* Link.swift */; };
 		248DED691E895A9B00B86C18 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DED681E895A9B00B86C18 /* ModelBase.swift */; };
@@ -39,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24394A5A1E8BFACA00BD47D0 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		243A28AF1E8ADFBE00F0B771 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		243A28B01E8ADFBE00F0B771 /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		2488592A1E89A4BD003D63D0 /* QueryTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTypes.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		248DED5C1E859E5900B86C18 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		248DED5E1E85A5BE00B86C18 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		248DED601E85A6BE00B86C18 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		248DED621E85A98D00B86C18 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		248DED641E89594600B86C18 /* DataAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAdapter.swift; sourceTree = "<group>"; };
 		248DED661E895A4900B86C18 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		248DED681E895A9B00B86C18 /* ModelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBase.swift; sourceTree = "<group>"; };
@@ -86,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				248DED591E859A9000B86C18 /* NetworkAdapter.swift */,
-				248DED621E85A98D00B86C18 /* Endpoint.swift */,
 				248DED641E89594600B86C18 /* DataAdapter.swift */,
 				2488592A1E89A4BD003D63D0 /* QueryTypes.swift */,
 				24A7AC261E89BBB6005FDF36 /* RedditAPIClient.swift */,
@@ -171,6 +170,7 @@
 				248DED5C1E859E5900B86C18 /* Result.swift */,
 				248DED5E1E85A5BE00B86C18 /* Logger.swift */,
 				248DED601E85A6BE00B86C18 /* JSON.swift */,
+				24394A5A1E8BFACA00BD47D0 /* Style.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -281,7 +281,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				248DED631E85A98D00B86C18 /* Endpoint.swift in Sources */,
 				248DED5F1E85A5BE00B86C18 /* Logger.swift in Sources */,
 				248DED5A1E859A9000B86C18 /* NetworkAdapter.swift in Sources */,
 				248DED391E858FA100B86C18 /* PostsViewController.swift in Sources */,
@@ -295,6 +294,7 @@
 				24A7AC271E89BBB6005FDF36 /* RedditAPIClient.swift in Sources */,
 				248DED371E858FA100B86C18 /* AppDelegate.swift in Sources */,
 				248DED651E89594600B86C18 /* DataAdapter.swift in Sources */,
+				24394A5B1E8BFACA00BD47D0 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

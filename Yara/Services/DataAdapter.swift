@@ -7,9 +7,12 @@
 //
 
 import Foundation
-
+import UIKit
 
 protocol DataAdapter {
     // Browsing
     func getListing(_ query: SubredditQuery, completion: @escaping ((Result<ListingContainer, Error>) -> Void)) -> URLSessionDataTask?
+
+    // Images
+    func getImage(_ url: URL, completion: @escaping ((Result<UIImage, Error>) -> Void))
 }

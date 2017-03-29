@@ -10,6 +10,7 @@ import Foundation
 
 enum ModelError: Error {
     case unsupportedType
+    case noData
 }
 
 struct ListingContainer: Model {
@@ -61,7 +62,7 @@ struct Listing: Model {
         case .link:
             self.data = try Link(dictionary: data)
         default:
-            // Learn on your own, go support all the types
+            // TODO: Learn on your own, go support all the types
             throw ModelError.unsupportedType
         }
     }

@@ -20,6 +20,7 @@ struct Link: Model {
     var subreddit: String
     var permalink: String
     var url: String
+    var isSelf: Bool
 
     enum Key: JSONPropertyValue {
         case id
@@ -33,6 +34,7 @@ struct Link: Model {
         case subreddit = "subreddit_name_prefixed"
         case permalink
         case url
+        case isSelf = "is_self"
     }
 
     init(dictionary: JSONDictionary) throws {
@@ -47,7 +49,7 @@ struct Link: Model {
         subreddit = try dictionary.decode(Key.subreddit.jsonValue)
         permalink = try dictionary.decode(Key.permalink.jsonValue)
         url = try dictionary.decode(Key.url.jsonValue)
-
+        isSelf = try dictionary.decode(Key.isSelf.jsonValue)
     }
 
     func toJSON() -> JSONDictionary {

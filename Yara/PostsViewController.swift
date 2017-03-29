@@ -41,7 +41,6 @@ class PostsViewController: UIViewController {
         }
     }
 
-
     private func handleListingDidLoad(_ result: Result<ListingContainer, Error>) {
         switch result {
         case .success(let container):
@@ -62,8 +61,17 @@ class PostsViewController: UIViewController {
     }
 
     private func setupTableView() {
+        // register our nibs used for our cells
         let nib = UINib(nibName: String(describing: PostTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PostTableViewCell.reuseIdentifier)
+
+        // allow our cells to be dynamic height
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 200
+
+        // style it a bit
+        tableView.backgroundView = nil
+        tableView.backgroundColor = Style.Color.lightGray
     }
 
     private func errorAlertController() -> UIViewController {
@@ -92,7 +100,6 @@ extension PostsViewController: UITableViewDataSource {
     }
 }
 
-
 extension PostsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
@@ -107,7 +114,12 @@ extension PostsViewController: UITableViewDelegate {
 }
 
 extension PostsViewController: ImageLoaderDelegate {
-    func thumbnail(for: Link, completion: ((UIImage?) -> Void)) {
-        completion(nil)
+    func thumbnail(for link: Link, completion: @escaping ((Result<UIImage, Error>) -> Void)) {
+        guard let thumbnail = link.thumbnail, !link.isSelf,
+            let url = URL(string:thumbnail) else {
+            completion(.failure(ModelError.noData))
+            return
+        }
+        api.getImage(url, completion: completion)
     }
 }
