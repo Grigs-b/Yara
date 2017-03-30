@@ -14,7 +14,10 @@ protocol URLQueryItemQueryable {
 
 struct SubredditQuery {
     var name: String
-    var count: Int = 0
+    var count: Int
+
+    static let countKey: String = "count"
+
     enum Pagination {
         case before(String)
         case after(String)
@@ -35,32 +38,37 @@ struct SubredditQuery {
 
     init() {
         name = ""
+        count = 0
     }
 
-    init(_ subreddit: String) {
+    init(_ subreddit: String, count: Int = 0) {
         name = subreddit
+        self.count = count
     }
 
-    init(_ subreddit: String, before link: String) {
+    init(_ subreddit: String, before link: String, count: Int = 0) {
         name = subreddit
         page = Pagination.before(link)
+        self.count = count
     }
 
-    init(_ subreddit: String, after link: String) {
+    init(_ subreddit: String, after link: String, count: Int = 0) {
         name = subreddit
         page = Pagination.after(link)
+        self.count = count
     }
 }
 
 extension SubredditQuery: URLQueryItemQueryable {
     var queryItems: [URLQueryItem] {
 
+        let countItem = URLQueryItem(name: SubredditQuery.countKey, value: "\(count)")
         if let page = page {
             let pageItem = URLQueryItem(name: page.name, value: page.link)
-            return [pageItem]
+            return [pageItem, countItem]
         }
 
-        return []
+        return [countItem]
     }
 
     var path: String {

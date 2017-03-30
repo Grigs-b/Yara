@@ -26,6 +26,8 @@
 		248DED691E895A9B00B86C18 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DED681E895A9B00B86C18 /* ModelBase.swift */; };
 		24A7AC271E89BBB6005FDF36 /* RedditAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A7AC261E89BBB6005FDF36 /* RedditAPIClient.swift */; };
 		24A7AC291E8AB455005FDF36 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A7AC281E8AB455005FDF36 /* Listing.swift */; };
+		24F5D68F1E8C50B500ADD41E /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5D68D1E8C50B500ADD41E /* LoadingTableViewCell.swift */; };
+		24F5D6901E8C50B500ADD41E /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24F5D68E1E8C50B500ADD41E /* LoadingTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		248DED681E895A9B00B86C18 /* ModelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBase.swift; sourceTree = "<group>"; };
 		24A7AC261E89BBB6005FDF36 /* RedditAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditAPIClient.swift; sourceTree = "<group>"; };
 		24A7AC281E8AB455005FDF36 /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		24F5D68D1E8C50B500ADD41E /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		24F5D68E1E8C50B500ADD41E /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 			children = (
 				243A28AF1E8ADFBE00F0B771 /* PostTableViewCell.swift */,
 				243A28B01E8ADFBE00F0B771 /* PostTableViewCell.xib */,
+				24F5D68D1E8C50B500ADD41E /* LoadingTableViewCell.swift */,
+				24F5D68E1E8C50B500ADD41E /* LoadingTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				248DED411E858FA100B86C18 /* LaunchScreen.storyboard in Resources */,
+				24F5D6901E8C50B500ADD41E /* LoadingTableViewCell.xib in Resources */,
 				248DED3E1E858FA100B86C18 /* Assets.xcassets in Resources */,
 				248DED3C1E858FA100B86C18 /* Main.storyboard in Resources */,
 				243A28B21E8ADFBE00F0B771 /* PostTableViewCell.xib in Resources */,
@@ -286,6 +293,7 @@
 				248DED391E858FA100B86C18 /* PostsViewController.swift in Sources */,
 				2488592B1E89A4BD003D63D0 /* QueryTypes.swift in Sources */,
 				248DED691E895A9B00B86C18 /* ModelBase.swift in Sources */,
+				24F5D68F1E8C50B500ADD41E /* LoadingTableViewCell.swift in Sources */,
 				248DED611E85A6BE00B86C18 /* JSON.swift in Sources */,
 				243A28B11E8ADFBE00F0B771 /* PostTableViewCell.swift in Sources */,
 				24A7AC291E8AB455005FDF36 /* Listing.swift in Sources */,

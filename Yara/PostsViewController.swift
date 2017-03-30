@@ -16,13 +16,13 @@ class PostsViewController: UIViewController {
     let subreddit: String = "Charlottesville"
     let api: RedditAPIClient = RedditAPIClient()
     var data: [Listing] = []
-    var query: SubredditQuery = SubredditQuery()
     var currentTask: URLSessionDataTask?
     var after: String? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadListing()
+        let query = SubredditQuery(subreddit)
+        loadListing(with: query)
         setupTableView()
     }
 
@@ -31,8 +31,7 @@ class PostsViewController: UIViewController {
         currentTask?.cancel()
     }
 
-    private func loadListing() {
-        query = SubredditQuery(subreddit)
+    fileprivate func loadListing(with query: SubredditQuery) {
         currentTask = api.getListing(query) { [weak self]
             result in
             guard let strongSelf = self else { return }
@@ -49,8 +48,7 @@ class PostsViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.currentTask = nil
-                //todo: continuous fetching as user scrolls
-                //self.query = SubredditQuery(subreddit, after: container.after)
+                self.after = container.after
             }
         case .failure(let error):
             DispatchQueue.main.async {
@@ -62,8 +60,11 @@ class PostsViewController: UIViewController {
 
     private func setupTableView() {
         // register our nibs used for our cells
-        let nib = UINib(nibName: String(describing: PostTableViewCell.self), bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: PostTableViewCell.reuseIdentifier)
+        let postnib = UINib(nibName: String(describing: PostTableViewCell.self), bundle: nil)
+        tableView.register(postnib, forCellReuseIdentifier: PostTableViewCell.reuseIdentifier)
+
+        let loadingnib = UINib(nibName: String(describing: LoadingTableViewCell.self), bundle: nil)
+        tableView.register(loadingnib, forCellReuseIdentifier: LoadingTableViewCell.reuseIdentifier)
 
         // allow our cells to be dynamic height
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -86,10 +87,33 @@ class PostsViewController: UIViewController {
 
 extension PostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return data.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row < data.count {
+            return postCell(at: indexPath)
+        } else {
+            return loadingCell()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let link = data.first?.data as? Link else { return nil }
+        return link.subreddit
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell is LoadingTableViewCell {
+            //todo: continuous fetching as user scrolls
+            if let after = after {
+                let query = SubredditQuery(subreddit, after: after, count: data.count)
+                loadListing(with: query)
+            }
+        }
+    }
+
+    private func postCell(at indexPath: IndexPath) -> PostTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.reuseIdentifier) as! PostTableViewCell
 
         let listing = data[indexPath.row]
@@ -99,13 +123,20 @@ extension PostsViewController: UITableViewDataSource {
         return cell
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return query.path
+    private func loadingCell() -> LoadingTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: LoadingTableViewCell.reuseIdentifier) as! LoadingTableViewCell
+        cell.configure()
+        return cell
     }
+
 }
 
 extension PostsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < data.count else {
+            tableView.deselectRow(at: indexPath, animated: false)
+            return
+        }
 
         let listing = data[indexPath.row]
         if let link = listing.data as? Link,
@@ -114,6 +145,10 @@ extension PostsViewController: UITableViewDelegate {
             let safariViewController = SFSafariViewController(url: url)
             present(safariViewController, animated: true, completion: nil)
         }
+    }
+
+    func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row < data.count ? true : false
     }
 }
 
