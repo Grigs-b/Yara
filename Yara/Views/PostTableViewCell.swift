@@ -15,7 +15,7 @@ protocol ImageLoaderDelegate:class {
 class PostTableViewCell: UITableViewCell {
 
     static let reuseIdentifier: String = "PostTableViewCell"
-    static let maxImageWidth: CGFloat = 120
+    static let maxImageWidth: CGFloat = 80
 
     @IBOutlet var containerView: UIView!
     @IBOutlet var thumbnailImageView: UIImageView!
@@ -76,7 +76,7 @@ class PostTableViewCell: UITableViewCell {
                 case .success(let image):
                     strongSelf.thumbnailImageView.image = image
                     strongSelf.thumbnailImageView.isHidden = false
-                    strongSelf.thumbnailWidthConstraint.constant = min(image.size.width, PostTableViewCell.maxImageWidth)
+                    strongSelf.thumbnailWidthConstraint.constant = PostTableViewCell.maxImageWidth
                     strongSelf.thumbnailImageView.layer.cornerRadius = 5.0
                     strongSelf.thumbnailImageView.layer.masksToBounds = true
                 case .failure:
