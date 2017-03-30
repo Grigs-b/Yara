@@ -57,3 +57,10 @@ struct Link: Model {
         return JSONDictionary()
     }
 }
+
+extension Link: Equatable {
+    public static func ==(lhs: Link, rhs: Link) -> Bool {
+        // note: laziest. equatable. ever. check all the fields when you're doing this for real
+        return lhs.id == rhs.id
+    }
+}

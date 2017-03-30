@@ -85,6 +85,7 @@
                 <outlet property="activityIndicatorView" destination="ICS-sY-9EV" id="Ct4-uE-S5l"/>
                 <outlet property="commentsLabel" destination="oF9-6M-0aa" id="E0Z-8d-sVl"/>
                 <outlet property="containerView" destination="3LC-gd-VIF" id="vSQ-Sh-97e"/>
+                <outlet property="thumbnailHeightConstraint" destination="ox2-cr-Vru" id="GwM-rC-Q7W"/>
                 <outlet property="thumbnailImageView" destination="HQ9-7w-uyl" id="HHJ-AK-L4f"/>
                 <outlet property="thumbnailWidthConstraint" destination="RNn-C9-J8x" id="Bjb-xj-zUC"/>
                 <outlet property="titleLabel" destination="zHw-0O-ez1" id="dbR-iS-yYG"/>
